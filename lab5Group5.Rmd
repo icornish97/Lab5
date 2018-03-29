@@ -21,8 +21,11 @@ acc <- read.csv("https://raw.githubusercontent.com/DS202-at-ISU/labs/master/data
 ## Part One 
 
 While there is a fairly standard amount of crashes that occur based on the day of the week it appears to rise during the weekend, and peak on Saturday.
+
+The frequency of crashes increases in the night time, as well as outside of the working day hours.
 ```{R}
 acc %>% group_by(DAY_WEEK) %>% summarise(numberOfAccidents = n())
+acc %>% group_by(HOUR) %>% summarise(numberOfAccidents = n())
 ```
 
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
