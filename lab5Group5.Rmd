@@ -24,8 +24,8 @@ While there is a fairly standard amount of crashes that occur based on the day o
 
 The frequency of crashes increases in the night time, as well as outside of the working day hours.
 ```{R}
-acc %>% group_by(DAY_WEEK) %>% summarise(numberOfAccidents = n())
-acc %>% group_by(HOUR) %>% summarise(numberOfAccidents = n())
+acc %>% group_by(DAY_WEEK) %>% summarise(numberOfAccidents = n()) %>% ggplot(aes(DAY_WEEK, numberOfAccidents)) + labs(title="Number of Accidents (Week)", x="Day of Week", y="Number of Accidents") + geom_line()
+acc %>% group_by(HOUR) %>% filter(HOUR != 99) %>% summarise(numberOfAccidents = n()) %>% ggplot(aes(HOUR, numberOfAccidents)) + labs(title="Number of Accidents (Week)", x="Hour", y="Number of Accidents") + geom_line()
 ```
 
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
