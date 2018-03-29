@@ -49,6 +49,8 @@ final %>% group_by(HOUR.x) %>% summarise(numberOfAccidents = n())
 final$SEX[final$SEX == 9] <- NA
 final$SEX[final$SEX == 8] <- NA
 final %>% group_by(SEX) %>% summarise(numberOfAccidents = n()) 
-ggplot(final, aes(x=SEX)) + geom_bar()
+final$SEX[final$SEX == 1] <- "Male"
+final$SEX[final$SEX == 2] <- "Female"
+final %>% filter(SEX == "Male"| SEX == "Female") %>% ggplot( aes(x=SEX)) + geom_bar()
 
 ```
