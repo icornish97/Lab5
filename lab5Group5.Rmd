@@ -38,13 +38,6 @@ acc %>% filter(DRUNK_DR > 0) %>% tally()
 
 ## Part Two
 ```{R}
-person <- read.csv("https://raw.githubusercontent.com/DS202-at-ISU/labs/master/data/fars2016/person.csv")
-drivers <- person%>% filter(PER_TYP == 1)
-final <- inner_join(acc, drivers, by= "ST_CASE")
 
-final %>% group_by(DAY_WEEK) %>% summarise(numberOfAccidents = n())
-final %>% group_by(HOUR.x) %>% summarise(numberOfAccidents = n())
-final$SEX[final$SEX == 9] <- NA
-final$SEX[final$SEX == 8] <- NA
-final %>% group_by(SEX) %>% summarise(numberOfAccidents = n())
+
 ```
