@@ -1,6 +1,6 @@
 ---
 title: "lab5"
-author: "Team 5"
+author: "Team 5: Ian Cornish, Barrett Hill, Taylor Rouse, and Omar Taylor"
 date: "March 29, 2018"
 output: html_document
 ---
