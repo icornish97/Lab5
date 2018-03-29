@@ -1,6 +1,6 @@
 ---
 title: "lab5"
-author: "Team 5"
+author: "Team 5: Ian Cornish, Barrett Hill, Taylor Rouse, and Omar Taylor"
 date: "March 29, 2018"
 output: html_document
 ---
@@ -38,6 +38,18 @@ acc %>% filter(DRUNK_DR > 0) %>% tally()
 
 ## Part Two
 ```{R}
+person <- read.csv("https://raw.githubusercontent.com/DS202-at-ISU/labs/master/data/fars2016/person.csv")
+drivers <- person%>% filter(PER_TYP == 1)
+final <- inner_join(acc, drivers)
 
+final %>% group_by(DAY_WEEK) %>% 
+  summarise(numberOfAccidents = n()) %>%
+  ggplot(aes(x= DAY_WEEK, y = numberOfAccidents)) + geom_line()
+final %>% group_by(HOUR) %>% filter(HOUR != 99)%>%
+  summarise(numberOfAccidents = n())%>% ggplot(aes(x=HOUR,y=numberOfAccidents))+geom_line()
+final %>% group_by(SEX) %>% summarise(numberOfAccidents = n()) 
+final$SEX[final$SEX == 1] <- "Male"
+final$SEX[final$SEX == 2] <- "Female"
+final %>% filter(SEX == "Male"| SEX == "Female") %>% ggplot( aes(x=SEX)) + geom_bar()
 
 ```
